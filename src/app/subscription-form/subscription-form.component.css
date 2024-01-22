@@ -1,0 +1,10 @@
+.card{
+    background-color: var(--secondary-color);
+    width: 1200px;
+}
+input{
+    width: 100%;
+}
+.subs-text{
+    width: 500px;
+}
