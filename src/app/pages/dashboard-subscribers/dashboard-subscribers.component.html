@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-effect bg-secondary-theme">
+                <div class="card-body text-center">
+                    <h3 class="text-theme-center">All Subscribers</h3>
+                    <p>From here you can manage your subscribers.</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button class="btn btn-warning text-white" routerLink="/dashboard/home">Back To Dashboard</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card shadow-effect">
+                <div class="card-body">
+                    <table class="table row-border hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let subscriber of subList$|async; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{ subscriber.name }}</td>
+                                <td>{{subscriber.email}}</td>
+                                <td>
+                                    <div class="d-flex gap-3">
+                                        <button class="btn btn-sm btn-danger" (click)="deleteSubscriber(subscriber.id)" > Delete </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

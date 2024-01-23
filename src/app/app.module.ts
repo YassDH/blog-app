@@ -32,6 +32,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule } from '@angular/common/http';
 import { TimestampToDatePipe } from './pipes/timestamp-to-date.pipe';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { DashboardSubscribersComponent } from './pages/dashboard-subscribers/dashboard-subscribers.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { LoginComponent } from './pages/auth/login/login.component';
     NewPostComponent,
     PostTitlePipe,
     TimestampToDatePipe,
-    LoginComponent
+    LoginComponent,
+    DashboardSubscribersComponent
   ],
   imports: [
     BrowserModule,
