@@ -8,17 +8,8 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-lg-3">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-lg-3">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-lg-3">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-lg-3">
-                <app-post-card></app-post-card>
+            <div class="col-lg-3" *ngFor="let featuredPosts of featuredPosts$ | async">
+                <app-post-card [postInfo]="featuredPosts"></app-post-card>
             </div>
         </div>
 

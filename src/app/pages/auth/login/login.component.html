@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card p-5 shadow-effect bg-secondary-theme">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h3 class="text-theme-primary">Login</h3>
+                        <p>Please login to your admin account to post a new blog</p>
+                    </div>
+                    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+                        <div class="form-group">
+                            <input [ngClass]="{'is-invalid' : Email.touched && Email.invalid}" #Email="ngModel" type="email" class="form-control" placeholder="Email" ngModel name="email" required>
+                            <div class="alert alert-danger" *ngIf="Email.touched && Email.invalid">Email cannot be empty</div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input [ngClass]="{'is-invalid' : Password.touched && Password.invalid}" #Password="ngModel" type="password" class="form-control" placeholder="Password" ngModel name="password" required>
+                            <div class="alert alert-danger" *ngIf="Password.touched && Password.invalid">Password cannot be empty</div>
+                        </div>
+                        <br>
+                        <button class="w-100 text-white btn btn-info btn-block btn-theme" [disabled]="loginForm.invalid">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <br>
+</div>

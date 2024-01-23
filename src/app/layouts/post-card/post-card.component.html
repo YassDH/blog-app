@@ -1,15 +1,15 @@
-<div class="card shadow-effect">
-    <img src="https://static6.depositphotos.com/1167801/651/i/450/depositphotos_6517777-stock-photo-rainbow-of-colorful-boxes.jpg" alt="post-image" class="card-img-top">
+<div class="card shadow-effect" *ngIf="postInfo">
+    <img src="{{postInfo.postImg}}" alt="post-image" class="card-img-top">
 
     <div class="card-body">
-        <small class="bg-light text-danger text-center"> Design </small>
-        <small class="bg-light text-success text-center ml-3" > Featured </small>
-        <small class="bg-light text-info text-center ml-3"> Views - 106,683  </small>
+        <small class="bg-light text-danger text-center"> {{postInfo.category.category}} </small>
+        <small *ngIf="postInfo.isFeatured" class="bg-light text-success text-center ml-3" > Featured </small>
+        <small class="bg-light text-info text-center ml-3"> Views - {{postInfo.views}}  </small>
 
-        <h5 class="mt-1">LOREM TITLE </h5>
-        <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia maiores, porro ratione repellendus quod cum quidem assumenda. Repellat hic repudiandae numquam ad voluptates ducimus consequuntur nesciunt in quae a. Earum? </p>
+        <h5 class="mt-1"> {{postInfo.title}} </h5>
+        <p> {{ postInfo.excerpt }} </p>
 
-        <small class="bg-light text-warning text-center"> LAST UPDATED - SEP 20, 2021  </small>
+        <small class="bg-light text-warning text-center"> LAST UPDATED - {{ postInfo.createdAt | timestampToDate | date}}  </small>
 
     </div>
 

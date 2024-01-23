@@ -2,10 +2,11 @@ import { Injectable, inject } from '@angular/core';
 import { Storage, getDownloadURL, ref, uploadBytes } from '@angular/fire/storage';
 import { ToastrService } from 'ngx-toastr';
 import { BlogPost } from '../Models/BlogPost.model';
-import { Firestore, collection, addDoc, collectionData, doc, docData, updateDoc, deleteDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, docData, updateDoc, deleteDoc, where, limit } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { BlogPostWithId } from '../Models/BlogPostWithId.model';
 import { Router } from '@angular/router';
+import { query } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -103,6 +104,12 @@ export class BlogPostsService {
         this.toastr.error(err.message)
       }
     )
+  }
+
+  getFeaturedPosts(){
+    let catCollection = collection(this.firestore, 'blogposts')
+    let q = query(catCollection, where('isFeatured', '==', true), limit(4))
+    return collectionData(q, { idField: 'id' }) as Observable<BlogPostWithId[]>;
   }
 
 }

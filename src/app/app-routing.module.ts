@@ -10,6 +10,8 @@ import { DashboardHomeComponent } from './pages/dashboard-home/dashboard-home.co
 import { DashboardCategoriesComponent } from './pages/dashboard-categories/dashboard-categories.component';
 import { AllPostsComponent } from './pages/dashboard-posts/all-posts/all-posts.component';
 import { NewPostComponent } from './pages/dashboard-posts/new-post/new-post.component';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { authGuardGuard } from './guards/auth-guard.guard';
 
 const routes: Routes = [
   { path : '', component : MainComponent, children : [
@@ -19,10 +21,12 @@ const routes: Routes = [
     { path: 'contact', component : ContactUsComponent}
   ]},
   { path : 'dashboard', component: DashboardComponent , children :[
-    { path : '', component : DashboardHomeComponent},
-    { path : 'categories', component : DashboardCategoriesComponent},
-    { path : 'posts', component : AllPostsComponent},
-    { path : 'posts/new', component : NewPostComponent},
+    { path : '', component : LoginComponent},
+    { path : 'home', component : DashboardHomeComponent, canActivate : [authGuardGuard]},
+    { path : 'categories', component : DashboardCategoriesComponent, canActivate : [authGuardGuard]},
+    { path : 'posts', component : AllPostsComponent, canActivate : [authGuardGuard]},
+    { path : 'posts/new', component : NewPostComponent, canActivate : [authGuardGuard]},
+    { path : '**', component : DashboardComponent, canActivate : [authGuardGuard]}
   ]}
 ];
 

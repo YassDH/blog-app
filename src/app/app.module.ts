@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import { PostTitlePipe } from './pipes/post-title.pipe';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule } from '@angular/common/http';
 import { TimestampToDatePipe } from './pipes/timestamp-to-date.pipe';
+import { LoginComponent } from './pages/auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { TimestampToDatePipe } from './pipes/timestamp-to-date.pipe';
     AllPostsComponent,
     NewPostComponent,
     PostTitlePipe,
-    TimestampToDatePipe
+    TimestampToDatePipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +69,7 @@ import { TimestampToDatePipe } from './pipes/timestamp-to-date.pipe';
       appId: "1:613877446325:web:215334c7308c637d31f0fc"
     })),
     provideStorage(() => getStorage()),
+    provideAuth(() => getAuth()),
     FirestoreModule,
     FormsModule,
     BrowserAnimationsModule,
