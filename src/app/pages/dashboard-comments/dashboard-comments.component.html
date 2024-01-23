@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-effect bg-secondary-theme">
+                <div class="card-body text-center">
+                    <h3 class="text-theme-center">All Comments</h3>
+                    <p>From here you can approve comments.</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button class="btn btn-warning text-white" routerLink="/dashboard/home">Back To Dashboard</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card shadow-effect">
+                <div class="card-body">
+                    <table class="table row-border hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Blog Post</th>
+                                <th>Name</th>
+                                <th>Comment</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let comment of notApprovedComments$|async; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{ comment.postName }}</td>
+                                <td>{{ comment.name }}</td>
+                                <td>{{ comment.comment }}</td>
+                                <td>
+                                    <div class="d-flex gap-3">
+                                        <button class="btn btn-sm btn-success" (click)="approveComment(comment.id)" > Approve </button>
+                                        <button class="btn btn-sm btn-danger" (click)="deleteComment(comment.id)" > Delete </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

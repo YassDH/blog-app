@@ -2,14 +2,37 @@
     <div class="card-body">
         <h4>Leave a Comment</h4>
         <p>You can leave a comment using this comment form</p>
-        <form >
+        <form #commForm="ngForm" (ngSubmit)="submitForm(commForm)">
             <div class="form-group">
                 <label for="">Name</label>
-                <input type="text" class="form-control shadow-effect" placeholder="Enter your name here">
+                <input type="text" 
+                class="form-control shadow-effect" 
+                placeholder="Enter your name here" 
+                name="name" 
+                #Name="ngModel" 
+                required 
+                ngModel 
+                [ngClass]="{'is-invalid' : Name.touched && Name.invalid}">
+                <div class="text-danger" *ngIf="Name.touched && Name.invalid">
+                    <div *ngIf="Name.hasError('required')"> Name is Required </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="">Comment</label>
-                <textarea cols="30" rows="10" class="form-control shadow-effect" placeholder="Add your comment here"></textarea>
+                <textarea 
+                cols="30" 
+                rows="10" 
+                class="form-control shadow-effect" 
+                placeholder="Add your comment here"
+                name="comment"
+                #Comment="ngModel"
+                [ngClass]="{'is-invalid' : Comment.touched && Comment.invalid}"
+                required 
+                ngModel
+                ></textarea>
+                <div class="text-danger" *ngIf="Comment.touched && Comment.invalid">
+                    <div *ngIf="Comment.hasError('required')"> Your comment must have content </div>
+                </div>
             </div>
             <button class="mt-5 btn btn-info btn-theme text-white">Add a Comment</button>
         </form>

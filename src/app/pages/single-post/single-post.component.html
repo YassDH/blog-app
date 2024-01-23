@@ -14,8 +14,8 @@
                     <p [innerHTML]="post.content"></p>
                 </div>
             </div>
-            <app-comment-form></app-comment-form>
-            <app-comment-list></app-comment-list>
+            <app-comment-form [postData]="post"></app-comment-form>
+            <app-comment-list [postData]="post"></app-comment-list>
         </div>
 
         <div class="col-md-3 gap-3">

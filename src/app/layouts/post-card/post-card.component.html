@@ -2,7 +2,7 @@
     <img src="{{postInfo.postImg}}" alt="post-image" class="card-img-top">
 
     <div class="card-body">
-        <div class=" d-flex gap-3">
+        <div class=" d-flex gap-3 flex-wrap">
             <small class="p-2 rounded bg-light text-danger text-center"> {{postInfo.category.category}} </small>
             <small *ngIf="postInfo.isFeatured" class="p-2 rounded bg-light text-success text-center ml-3" > Featured </small>
             <small class="p-2 rounded bg-light text-info text-center ml-3"> Views - {{postInfo.views}}  </small>

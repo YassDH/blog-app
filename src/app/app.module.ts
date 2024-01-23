@@ -33,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TimestampToDatePipe } from './pipes/timestamp-to-date.pipe';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { DashboardSubscribersComponent } from './pages/dashboard-subscribers/dashboard-subscribers.component';
+import { DashboardCommentsComponent } from './pages/dashboard-comments/dashboard-comments.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { DashboardSubscribersComponent } from './pages/dashboard-subscribers/das
     PostTitlePipe,
     TimestampToDatePipe,
     LoginComponent,
-    DashboardSubscribersComponent
+    DashboardSubscribersComponent,
+    DashboardCommentsComponent
   ],
   imports: [
     BrowserModule,
