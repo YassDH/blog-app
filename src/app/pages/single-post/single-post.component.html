@@ -1,15 +1,17 @@
 <div class="container">
-    <div class="row">
+    <div class="row" *ngIf="postData$ | async as post">
         <div class="col-md-9">
             <div class="card shadow-effect">
-                <img src="https://static6.depositphotos.com/1167801/651/i/450/depositphotos_6517777-stock-photo-rainbow-of-colorful-boxes.jpg" alt="" class="card-img-top img-fluid">
+                <img src="{{post.postImg}}" alt="" class="card-img-top img-fluid">
                 <div class="card-body">
-                    <small class="bg-light text-danger text-center"> Category 1</small>
-                    <small class="bg-light text-sucess text-center ml-2"> Featured </small>
-                    <small class="bg-light text-info text-center ml-2"> Views - 106,638 </small>
-                    <small class="bg-light text-warning text-center ml-2"> LAST UPDATED - SEP 10 - 2021 </small>
-                    <h1 class="mt-3 mb-3">LOREM TITLE</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse atque quos blanditiis maiores obcaecati repellendus aliquam. Architecto rem vel quis ipsam natus deleniti quidem repellendus beatae maxime alias, tempore officia!</p>
+                    <div class=" d-flex gap-3">
+                        <small class="p-2 rounded bg-light text-danger text-center">{{post.category.category}}</small>
+                        <small *ngIf="post.isFeatured" class="p-2 rounded bg-light text-sucess text-center ml-2"> Featured </small>
+                        <small class="p-2 rounded bg-light text-info text-center ml-2"> Views - {{ post.views }} </small>
+                        <small class="p-2 rounded bg-light text-warning text-center ml-2"> LAST UPDATED - {{ post.createdAt | timestampToDate | date }} </small>
+                    </div>
+                    <h1 class="mt-3 mb-3">{{ post.title }}</h1>
+                    <p [innerHTML]="post.content"></p>
                 </div>
             </div>
             <app-comment-form></app-comment-form>
@@ -17,14 +19,8 @@
         </div>
 
         <div class="col-md-3 gap-3">
-            <div class=" mb-3">
-                <app-post-card></app-post-card>
-            </div>
-            <div class=" mb-3">
-                <app-post-card></app-post-card>
-            </div>
-            <div class=" mb-3">
-                <app-post-card></app-post-card>
+            <div class=" mb-3" *ngFor="let similarPost of  similarPosts$ | async">
+                <app-post-card [postInfo]="similarPost" ></app-post-card>
             </div>
         </div>
     </div>

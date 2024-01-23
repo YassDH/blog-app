@@ -1,16 +1,16 @@
-<div class="card shadow-effect" *ngIf="postInfo">
+<div style="cursor: pointer;" class="card shadow-effect" *ngIf="postInfo" [routerLink]="['/post', postInfo.category.categoryId ,postInfo.id]">
     <img src="{{postInfo.postImg}}" alt="post-image" class="card-img-top">
 
     <div class="card-body">
-        <small class="bg-light text-danger text-center"> {{postInfo.category.category}} </small>
-        <small *ngIf="postInfo.isFeatured" class="bg-light text-success text-center ml-3" > Featured </small>
-        <small class="bg-light text-info text-center ml-3"> Views - {{postInfo.views}}  </small>
-
+        <div class=" d-flex gap-3">
+            <small class="p-2 rounded bg-light text-danger text-center"> {{postInfo.category.category}} </small>
+            <small *ngIf="postInfo.isFeatured" class="p-2 rounded bg-light text-success text-center ml-3" > Featured </small>
+            <small class="p-2 rounded bg-light text-info text-center ml-3"> Views - {{postInfo.views}}  </small>
+        </div>
         <h5 class="mt-1"> {{postInfo.title}} </h5>
         <p> {{ postInfo.excerpt }} </p>
 
-        <small class="bg-light text-warning text-center"> LAST UPDATED - {{ postInfo.createdAt | timestampToDate | date}}  </small>
-
+        <small class="p-2 rounded bg-light text-warning text-center"> LAST UPDATED - {{ postInfo.createdAt | timestampToDate | date}}  </small>
     </div>
 
 </div>

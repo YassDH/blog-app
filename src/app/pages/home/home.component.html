@@ -23,23 +23,8 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4 mt-3" >
-            <app-post-card></app-post-card>
-        </div>
-        <div class="col-md-4 mt-3" >
-            <app-post-card></app-post-card>
-        </div>
-        <div class="col-md-4 mt-3" >
-            <app-post-card></app-post-card>
-        </div>
-        <div class="col-md-4 mt-3" >
-            <app-post-card></app-post-card>
-        </div>
-        <div class="col-md-4 mt-3" >
-            <app-post-card></app-post-card>
-        </div>
-        <div class="col-md-4 mt-3" >
-            <app-post-card></app-post-card>
+        <div class="col-md-4 mt-3" *ngFor="let latestPosts of latestPosts$ | async">
+            <app-post-card [postInfo]="latestPosts"></app-post-card>
         </div>
     </div>
 
