@@ -13,4 +13,46 @@
             </div>
         </div>
     </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card shadow-effect">
+                <div class="card-body">
+                    <table class="table row-border hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Blog Image</th>
+                                <th>Title</th>
+                                <th>Excerpt</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let blogPost of blogPosts$|async; let i = index">
+                                <td [width]="10">{{i+1}}</td>
+                                <td [width]="200"><img src="{{blogPost.postImg}}" alt="" class="img img-fluid"></td>
+                                <td [width]="200">{{blogPost.title}}</td>
+                                <td [width]="300">{{blogPost.excerpt}}</td>
+                                <td>{{blogPost.category.category}}</td>
+                                <td>{{blogPost.createdAt | timestampToDate | date }}</td>
+                                <td>
+                                    <div class="d-flex gap-3">
+                                        <button class="btn btn-sm btn-warning" routerLink="/dashboard/posts/new" [queryParams]="{id : blogPost.id}" > Edit </button>
+                                        <button class="btn btn-sm btn-danger" (click)="deletePost(blogPost.id)" > Delete </button>
+                                        <button *ngIf="!blogPost.isFeatured" class="btn btn-sm btn-success" (click)="onFeatured(blogPost.id, true)" > Make Featured </button>
+                                        <button *ngIf="blogPost.isFeatured" class="btn btn-sm btn-info text-white" (click)="onFeatured(blogPost.id, false)" > Remove Featured </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
