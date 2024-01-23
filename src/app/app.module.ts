@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { HeaderComponent } from './layouts/header/header.component';
@@ -17,6 +17,17 @@ import { SubscriptionFormComponent } from './subscription-form/subscription-form
 import { CommentFormComponent } from './comments/comment-form/comment-form.component';
 import { CommentListComponent } from './comments/comment-list/comment-list.component';
 import { PostCardComponent } from './layouts/post-card/post-card.component';
+import { MainComponent } from './sections/main/main.component';
+import { DashboardComponent } from './sections/dashboard/dashboard.component';
+import { DashboardHomeComponent } from './pages/dashboard-home/dashboard-home.component';
+import { DashboardCategoriesComponent } from './pages/dashboard-categories/dashboard-categories.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { AllPostsComponent } from './pages/dashboard-posts/all-posts/all-posts.component';
+import { NewPostComponent } from './pages/dashboard-posts/new-post/new-post.component';
+import { PostTitlePipe } from './pipes/post-title.pipe';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +42,14 @@ import { PostCardComponent } from './layouts/post-card/post-card.component';
     SubscriptionFormComponent,
     CommentFormComponent,
     CommentListComponent,
-    PostCardComponent
+    PostCardComponent,
+    MainComponent,
+    DashboardComponent,
+    DashboardHomeComponent,
+    DashboardCategoriesComponent,
+    AllPostsComponent,
+    NewPostComponent,
+    PostTitlePipe
   ],
   imports: [
     BrowserModule,
@@ -45,6 +63,12 @@ import { PostCardComponent } from './layouts/post-card/post-card.component';
       appId: "1:613877446325:web:215334c7308c637d31f0fc"
     })),
     provideFirestore(() => getFirestore()),
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    AngularEditorModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
