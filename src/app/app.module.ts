@@ -34,6 +34,7 @@ import { TimestampToDatePipe } from './pipes/timestamp-to-date.pipe';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { DashboardSubscribersComponent } from './pages/dashboard-subscribers/dashboard-subscribers.component';
 import { DashboardCommentsComponent } from './pages/dashboard-comments/dashboard-comments.component';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { DashboardCommentsComponent } from './pages/dashboard-comments/dashboard
     TimestampToDatePipe,
     LoginComponent,
     DashboardSubscribersComponent,
-    DashboardCommentsComponent
+    DashboardCommentsComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

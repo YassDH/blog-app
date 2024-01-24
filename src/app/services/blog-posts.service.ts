@@ -114,7 +114,7 @@ export class BlogPostsService {
 
   getLatestPosts(){
     let catCollection = collection(this.firestore, 'blogposts')
-    let q = query(catCollection, orderBy('createdAt'), limit(6))
+    let q = query(catCollection, orderBy('createdAt', 'desc'), limit(6))
     return collectionData(q, { idField: 'id' }) as Observable<BlogPostWithId[]>;
   }
 
