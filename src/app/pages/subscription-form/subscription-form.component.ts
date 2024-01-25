@@ -1,7 +1,7 @@
 import { Component, OnDestroy, inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Subscriber } from '../Models/Subscriber.model';
-import { SubscribersService } from '../services/subscribers.service';
+import { Subscriber } from '../../Models/Subscriber.model';
+import { SubscribersService } from '../../services/subscribers.service';
 import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
