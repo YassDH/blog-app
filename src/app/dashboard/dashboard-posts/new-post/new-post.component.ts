@@ -114,4 +114,21 @@ export class NewPostComponent implements OnDestroy {
     this.postForm.reset()
     this.imgSrc = "./assets/image-placeholder.png"
   }
+
+  
+  canDeactivate(){
+    let empty = true;
+    let values = Object.values(this.postForm.value);
+  
+    for (const value of values) {
+      if (value) {
+        empty = false;
+        break;
+      }
+    }
+    if (!empty) {
+      return window.confirm('You have unsaved changes. Do you really want to leave?');
+    }
+    return true;
+  }
 }
