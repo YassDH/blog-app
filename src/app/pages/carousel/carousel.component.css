@@ -1,0 +1,77 @@
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Candal', serif;
+    margin: 5px;
+}
+
+a{
+    text-decoration: none;
+    color:inherit;
+
+}
+.page-wrapper a:hover{
+color: #006669;
+}
+
+.post-slider{
+    position: relative;
+}
+.post-slider .slider-title{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 30px auto;
+
+}
+
+.post-slider .next{
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    font-size: 2em;
+    color:#006669 ;
+    cursor: pointer;
+}
+.post-slider .prev {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    font-size: 2em;
+    color: #006669;
+    cursor: pointer;
+}
+
+.post-slider .post-wrapper{
+    width: 84%;
+    height: 350px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 10px 0 10px 0;
+}
+.post-slider .post-wrapper .post{
+    background: white;
+    display: inline-block;
+    width: 300px;
+    height: 330px;
+    margin: 0 10px;
+    box-shadow: 1rem 1rem 1rem -1rem #535353;
+}
+.post-slider .post-wrapper .post .post-info{
+    height: 130px;
+    padding: 0px 5px;
+}
+
+.post-slider .post-wrapper .post .slider-image{
+    width: 100%;
+    padding: 0px 5px;
+    height: 200px;
+    border-top-left-radius:5px;
+    border-top-right-radius: 5px;
+}
