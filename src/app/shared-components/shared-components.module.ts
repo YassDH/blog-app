@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { TimestampToDatePipe } from '../pipes/timestamp-to-date.pipe';
+import { HeaderDirective } from './header/header.directive';
 
 
 
@@ -13,6 +14,7 @@ import { TimestampToDatePipe } from '../pipes/timestamp-to-date.pipe';
     FooterComponent,
     ErrorPageComponent,
     TimestampToDatePipe,
+    HeaderDirective,
   ],
   imports: [
     CommonModule
