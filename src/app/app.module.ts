@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedComponentsModule } from './shared-components/shared-components.module';
 import { CommentListComponent } from './pages/comments/comment-list/comment-list.component';
 import { CommentFormComponent } from './pages/comments/comment-form/comment-form.component';
+import { CarouselComponent } from './pages/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CommentFormComponent } from './pages/comments/comment-form/comment-form
     CommentListComponent,
     PostCardComponent,
     MainComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,

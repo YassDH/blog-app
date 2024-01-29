@@ -1,7 +1,8 @@
 nav {
-    margin-top: 100px;
-    height: 50px;
-    background-color: var(--navbar-footer-color);
+    margin-top: 60px;
+    height: 40px;
+
+    z-index: 1;
 }
 
 .nav-link{
@@ -9,3 +10,42 @@ nav {
     color: var(--primary-color);
 }
 
+.button {
+    font-size: 16px;
+    color: inherit;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+}
+
+.button:focus,
+.button:hover {
+    color: orange;
+}
+
+.button:focus:after,
+.button:hover:after {
+    width: 100%;
+    left: 0%;
+}
+
+.button:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: orange;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+}
