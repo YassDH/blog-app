@@ -4,7 +4,8 @@
 @import '~ngx-toastr/toastr';
 :root {
     --primary-color: #026467;
-    --secondary-color: #E5F5EA;
+    --secondary-color: #ffffff8a;/*#E5F5EA;*/
+    --secondary-secondary-color: #ffffff8a;
     --body-text-color: #596392;
     --navbar-footer-color: #F9F9F9;
 }

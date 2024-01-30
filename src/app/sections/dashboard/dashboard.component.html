@@ -1,5 +1,83 @@
-<app-header></app-header>
-<div class="app-body">
-    <router-outlet></router-outlet>
-</div>
-<app-footer></app-footer>
+
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation" [ngClass]="{ 'active': toggleActive }">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-brands fa-blogger-b"></i>
+                        </span>
+                        <span class="title">Blog-admin</span>
+                    </a>
+                </li>
+                <li   [routerLinkActive]="'hovered'"  >
+                    <a [routerLink] ="['/dashboard/home']" >
+                        <span class="icon"><i class="fa-solid fa-table-columns"></i>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                <li   [routerLinkActive]="'hovered'"  >
+                    <a [routerLink] ="['/dashboard/categories']" >
+                        <span class="icon"><i class="fas fa-clipboard-list"></i>
+                        </span>
+                        <span class="title">Categories</span>
+                    </a>
+                </li>
+                <li   [routerLinkActive]="'hovered'"  >
+                    <a [routerLink] ="['/dashboard/posts']" >
+                        <span class="icon"><i class="fas fa-file-image"></i>
+                        </span>
+                        <span class="title">Posts</span>
+                    </a>
+                </li>
+                <li  [routerLinkActive]="'hovered'"  >
+                    <a [routerLink] ="['/dashboard/comments']">
+                        <span class="icon"><i class="fas fa-message"></i>
+                        </span>
+                        <span class="title">Comments</span>
+                    </a>
+                </li>
+                <li  [routerLinkActive]="'hovered'"  >
+                    <a [routerLink] ="['/dashboard/subscribers']" >
+                        <span class="icon"><i class="fas fa-users"></i>
+                        </span>
+                        <span class="title">Subscribers</span>
+                    </a>
+                </li>
+                <br>
+                <br>
+                <br>
+                <li  (click)="onLogout()">
+                    <a class="logout" style="cursor: pointer;">
+                        <span class="icon"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </span>
+                        <span class="title">Logout</span>
+                    </a>
+                </li>
+            </ul>
+            
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main"  [ngClass]="{ 'active': toggleActive }">
+            <div class="topbar">
+                <div class="toggle" (click)="toggleMenu()">
+                    <span class="icon"><i class="fa-solid" [ngClass]="{'fa-bars':!toggleActive,'fa-chevron-right':toggleActive}"></i>
+                    </span>
+                </div> 
+                <div class="search">
+                       <span class="apptitle">dashboard</span>
+                </div>
+            </div>
+            <!-- ======================= routeroutlet ================== -->
+           <div class="router">
+            <router-outlet></router-outlet>
+           </div> 
+
+            
+           
+        </div>
+    </div>
+
