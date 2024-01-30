@@ -4,8 +4,8 @@
 @import '~ngx-toastr/toastr';
 :root {
     --primary-color: #026467;
-    --secondary-color: #ffffff8a;/*#E5F5EA;*/
-    --secondary-secondary-color: #ffffff8a;
+    --secondary-color: #E5F5EA;
+    --third-color: #ffffff8a;
     --body-text-color: #596392;
     --navbar-footer-color: #F9F9F9;
 }
@@ -40,6 +40,9 @@ body{
 
 .bg-secondary-theme{
     background-color: var(--secondary-color);
+}
+.bg-third-theme{
+  background-color: var(--third-color);
 }
 
 .text-theme-primary{

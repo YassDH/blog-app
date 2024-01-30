@@ -15,8 +15,8 @@ import { exitNewPostGuard } from '../guards/exit-new-post.guard';
 
 
 const routes: Routes = [
+  { path : '', component : LoginComponent, canActivate : [loggedInGuard]},
   { path : '', component: DashboardComponent , children :[
-    { path : '', component : LoginComponent, canActivate : [loggedInGuard]},
     { path : 'home', component : DashboardHomeComponent, canActivate : [authGuardGuard]},
     { path : 'categories', component : DashboardCategoriesComponent, canActivate : [authGuardGuard]},
     { path : 'subscribers', component : DashboardSubscribersComponent, canActivate : [authGuardGuard]},
