@@ -4,6 +4,6 @@
     </div>
     <div *ngIf="loggedInUser$ | async as user" class="container justify-content-center d-flex gap-3">
         <a href="#" class="mr-3">{{user.email}}</a>
-        <button class="btn btn-sm btn-info bg-secondary-theme text-theme-primary" (click)="onLogout()">Logout</button>
+        <button style="text-decoration: none;" class="btn btn-sm btn-info bg-secondary-theme text-theme-primary" (click)="onLogout()">Logout</button>
     </div>
 </header>
