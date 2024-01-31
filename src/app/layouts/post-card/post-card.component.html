@@ -1,6 +1,5 @@
 <div style="cursor: pointer;" class="card shadow-effect" *ngIf="postInfo" [routerLink]="['/post', postInfo.category.categoryId ,postInfo.id]">
-    <img src="{{postInfo.postImg}}" alt="post-image" class="card-img-top">
-
+    <div class="card-img-top" style=" height: 250px; background-image: url({{postInfo.postImg}}); background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
     <div class="card-body">
         <div class=" d-flex gap-3 flex-wrap">
             <small class="p-2 rounded bg-light text-danger text-center"> {{postInfo.category.category}} </small>
