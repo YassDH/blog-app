@@ -1,40 +1,42 @@
+
 <div class="container">
+    
+    <div class="row"><h1>Welcome Back!👋  </h1></div>
     <div class="row">
-        <div class="col-md-5 mb-5">
-            <div class="card shadow-effect" routerLink ="/dashboard/categories">
-                <div class="card-body text-center bg-third-theme">
-                    <h1 class="mt-3 text-theme-primary"><i class="fas fa-clipboard-list"></i></h1>
-                    <h2 class="text-theme-primary"> Categories </h2>
-                    <p> Manage Your Categories Details Here. </p>
-                </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4  ">
+            <div class="col ">
+                <div class="card firstcard">
+                    <div class="card-body">
+                        <h2 class="card-title"><b> {{postsCount$|async}}</b></h2>
+                      <h4 class="card-text ">Total posts</h4>
+                    </div>
+                  </div>
             </div>
-        </div>
-        <div class="col-md-5 mb-5">
-            <div class="card shadow-effect" routerLink ="/dashboard/posts">
-                <div class="card-body text-center bg-third-theme">
-                    <h1 class="mt-3 text-theme-primary"><i class="fas fa-file-image"></i></h1>
-                    <h2 class="text-theme-primary"> Posts </h2>
-                    <p> Manage Your Posts Details Here. </p>
-                </div>
+            <div class="col ">
+                <div class="card  secondcard">
+                    <div class="card-body">
+                        <h2 class="card-title"><b> {{commentsCount$|async}}</b></h2>
+                      <h4 class="card-text ">Comments</h4>
+                    </div>
+                  </div>
             </div>
-        </div>
-        <div class="col-md-5 mb-5">
-            <div class="card shadow-effect" routerLink ="/dashboard/subscribers">
-                <div class="card-body text-center bg-third-theme">
-                    <h1 class="mt-3 text-theme-primary"><i class="fas fa-users"></i></h1>
-                    <h2 class="text-theme-primary"> Subscribers </h2>
-                    <p> Manage Your Subscribers Here. </p>
-                </div>
+            <div class="col ">
+                <div class="card  thirdcard">
+                    <div class="card-body">
+                        <h2 class="card-title"><b> {{categoriesCount$|async}}</b></h2>
+                      <h4 class="card-text ">Categories</h4>
+                    </div>
+                  </div>
             </div>
-        </div>
-        <div class="col-md-5 mb-5">
-            <div class="card shadow-effect" routerLink ="/dashboard/comments">
-                <div class="card-body text-center bg-third-theme">
-                    <h1 class="mt-3 text-theme-primary"><i class="fas fa-message"></i></h1>
-                    <h2 class="text-theme-primary"> Comments </h2>
-                    <p> Approve Comments Here. </p>
+            <div class="col ">
+              <div class="card  fourthcard">
+                  <div class="card-body">
+                      <h2 class="card-title"><b> {{subCount$|async}}</b></h2>
+                    <h4 class="card-text ">Subscribers</h4>
+                  </div>
                 </div>
-            </div>
+          </div>
+          </div>
         </div>
-    </div>
+  
 </div>

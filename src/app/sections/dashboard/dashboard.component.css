@@ -48,8 +48,7 @@
   transition: 0.5s;
   overflow: hidden;
   
- 
-  border-top-right-radius: 10px;
+
 }
 .navigation.active {
   width: 80px;
