@@ -1,6 +1,6 @@
 <div class="container">
     <br>
-    <div class="row" *ngIf="postData$ | async as post">
+    <div class="row" *ngIf="postData$ | async | async as post">
         <div class="col-md-9">
             <div class="card shadow-effect">
                 <img src="{{post.postImg}}" alt="" class="card-img-top img-fluid">

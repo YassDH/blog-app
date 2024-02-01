@@ -15,7 +15,7 @@ export class SinglePostComponent implements OnInit, OnDestroy{
   blogPostsService : BlogPostsService = inject(BlogPostsService)
   route : ActivatedRoute = inject(ActivatedRoute)
   subscription!: Subscription
-  postData$! : Observable<BlogPostWithId | null>
+  postData$! : Observable<Observable<BlogPostWithId> | null>
   similarPosts$ : Observable<BlogPostWithId[] | null> = of(null)
 
   ngOnInit(): void{

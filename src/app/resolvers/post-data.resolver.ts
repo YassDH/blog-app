@@ -4,7 +4,7 @@ import { BlogPostWithId } from '../Models/BlogPostWithId.model';
 import { BlogPostsService } from '../services/blog-posts.service';
 import { inject } from '@angular/core';
 
-export const postDataResolver: ResolveFn<Observable<BlogPostWithId | null>> = (route, state) => {
+export const postDataResolver: ResolveFn<Observable<Observable<BlogPostWithId> | null>> = (route, state) => {
 
   const router: Router = inject(Router)
   const blogPostsService: BlogPostsService = inject(BlogPostsService)
@@ -17,7 +17,7 @@ export const postDataResolver: ResolveFn<Observable<BlogPostWithId | null>> = (r
         return null
       }else{
         blogPostsService.countViews(value.id) 
-        return value
+        return blogPostsService.loadOneData(value.id)
       }
     })
   )
