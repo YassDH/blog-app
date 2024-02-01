@@ -15,8 +15,10 @@ const routes: Routes = [
   { path : '', component : MainComponent, children : [
     { path: '', component : HomeComponent },
     { path: 'category/:category/:id', component : SingleCategoryComponent , resolve: { categoryPosts: categoryResolver, categoryName : categoryNameResolver } },
-    { path: 'post/:categoryId/:id', component : SinglePostComponent, 
-      // resolve : { postData : postDataResolver , similarPosts: similarPostsResolver  } 
+    { path: 'post/:postLink', component : SinglePostComponent, 
+      resolve : { postData : postDataResolver 
+        // , similarPosts: similarPostsResolver  
+      } 
     },
     { path: 'contact', component : ContactUsComponent}
   ]},

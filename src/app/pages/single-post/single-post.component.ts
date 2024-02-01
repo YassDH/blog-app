@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Observable, Subscription, map, of } from 'rxjs';
 import { BlogPostWithId } from 'src/app/Models/BlogPostWithId.model';
 import { BlogPostsService } from 'src/app/services/blog-posts.service';
 
@@ -11,17 +11,47 @@ import { BlogPostsService } from 'src/app/services/blog-posts.service';
   changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class SinglePostComponent implements OnInit, OnDestroy{
+  router : Router = inject(Router)
   blogPostsService : BlogPostsService = inject(BlogPostsService)
   route : ActivatedRoute = inject(ActivatedRoute)
   subscription!: Subscription
-  postData$! : Observable<BlogPostWithId>
-  similarPosts$! : Observable<BlogPostWithId[]>
+  postData$! : Observable<BlogPostWithId | null>
+  similarPosts$ : Observable<BlogPostWithId[] | null> = of(null)
 
   ngOnInit(): void{
+    this.postData$ = this.route.data.pipe(map((data)=>{
+      return data['postData']
+    }))
+
+
     this.subscription = this.route.params.subscribe(val=>{
-      this.postData$ = this.blogPostsService.loadOneData(val['id'])
-      this.similarPosts$ = this.blogPostsService.loadSimilarPosts(val['categoryId'])
-      this.blogPostsService.countViews(val['id'])
+      const postLink = val['postLink']
+
+    //   this.postData$ = this.blogPostsService.loadDataWithPostLink(postLink).pipe(
+    //     map((value)=>{
+    //       if(!value){
+    //         this.router.navigate(['/error'])
+    //         return null
+    //       }else{
+    //         return value
+    //       }
+    //     })
+    //   )
+
+      this.subscription = this.blogPostsService.loadDataWithPostLink(postLink).subscribe(
+        (value)=>{
+          if(!value){
+            this.router.navigate(['/error'])
+          }else{
+            this.similarPosts$ = this.blogPostsService.loadSimilarPosts(value.category.categoryId)
+          }
+        }
+      )
+
+      // this.postData$ = this.blogPostsService.loadOneData(val['id'])
+      // this.similarPosts$ = this.blogPostsService.loadSimilarPosts(val['categoryId'])
+      // this.blogPostsService.countViews(val['id'])
+      
     })
   }
 

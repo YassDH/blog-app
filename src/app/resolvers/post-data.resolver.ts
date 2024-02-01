@@ -1,5 +1,5 @@
 import { ResolveFn, Router } from '@angular/router';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { BlogPostWithId } from '../Models/BlogPostWithId.model';
 import { BlogPostsService } from '../services/blog-posts.service';
 import { inject } from '@angular/core';
@@ -8,12 +8,17 @@ export const postDataResolver: ResolveFn<Observable<BlogPostWithId | null>> = (r
 
   const router: Router = inject(Router)
   const blogPostsService: BlogPostsService = inject(BlogPostsService)
-  const postId = route.params['id'];
-  blogPostsService.countViews(postId) // ADD 1 VIEW TO THE POST WITH THE ID PASSED IN THE PARAMS
-  return blogPostsService.loadOneData(postId).pipe(
-    catchError(() => {
-      router.navigate(['/error']);
-      return of(null);
+  const postLink = route.params['postLink'];
+  
+  return blogPostsService.loadDataWithPostLink(postLink).pipe(
+    map((value)=>{
+      if(!value){
+        router.navigate(['/error'])
+        return null
+      }else{
+        blogPostsService.countViews(value.id) 
+        return value
+      }
     })
-  );
+  )
 };

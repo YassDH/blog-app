@@ -1,15 +1,17 @@
-<div class="bg-theme p-5">
-    <div class="container">
-        <h1 class="text-white" *ngIf="categoryData"> {{ categoryData }} Category </h1>
-        <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+<div *ngIf="categoryPosts$|async as posts">
+    <div class="bg-theme p-5">
+        <div class="container">
+            <h1 class="text-white" > {{ posts[0].category.category }} Category </h1>
+            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+
     </div>
 
-</div>
-
-<div class="container mt-5 mb-5">
-    <div class="row">
-        <div class="col-md-4 mb-3" *ngFor="let post of categoryPosts$|async">
-            <app-post-card [postInfo]="post"></app-post-card>
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-4 mb-3" *ngFor="let post of posts">
+                <app-post-card [postInfo]="post"></app-post-card>
+            </div>
         </div>
     </div>
 </div>
