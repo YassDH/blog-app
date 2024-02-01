@@ -1,4 +1,23 @@
 .card{
-    height: 200px;
     cursor: pointer;
+}
+.container{
+    padding: 2%;
+}
+
+.firstcard{
+    background-color: #FF6A59;
+    color: white;
+}
+.secondcard{
+    background-color: #21262E;
+    color: white;
+}
+.thirdcard{
+    background-color: #1badd6;
+    color: white;
+}
+.fourthcard{
+    background-color: #4cbc9a;
+    color: white;
 }
