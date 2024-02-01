@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { BlogPostWithId } from 'src/app/Models/BlogPostWithId.model';
@@ -7,7 +7,8 @@ import { BlogPostsService } from 'src/app/services/blog-posts.service';
 @Component({
   selector: 'app-single-post',
   templateUrl: './single-post.component.html',
-  styleUrls: ['./single-post.component.css']
+  styleUrls: ['./single-post.component.css'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class SinglePostComponent implements OnInit, OnDestroy{
   blogPostsService : BlogPostsService = inject(BlogPostsService)

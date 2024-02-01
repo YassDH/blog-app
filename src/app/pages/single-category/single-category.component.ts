@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscribable, Subscription, map } from 'rxjs';
 import { BlogPostWithId } from 'src/app/Models/BlogPostWithId.model';
@@ -7,7 +7,8 @@ import { BlogPostsService } from 'src/app/services/blog-posts.service';
 @Component({
   selector: 'app-single-category',
   templateUrl: './single-category.component.html',
-  styleUrls: ['./single-category.component.css']
+  styleUrls: ['./single-category.component.css'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class SingleCategoryComponent implements OnInit{
 
