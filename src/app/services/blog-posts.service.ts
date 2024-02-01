@@ -2,8 +2,8 @@ import { Injectable, inject } from '@angular/core';
 import { Storage, getDownloadURL, ref, uploadBytes } from '@angular/fire/storage';
 import { ToastrService } from 'ngx-toastr';
 import { BlogPost } from '../Models/BlogPost.model';
-import { Firestore, collection, addDoc, collectionData, doc, docData, updateDoc, deleteDoc, where, limit, increment } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Firestore, collection, addDoc, collectionData, doc, docData, updateDoc, deleteDoc, where, limit, increment, getDoc, getDocs } from '@angular/fire/firestore';
+import { Observable, from, map } from 'rxjs';
 import { BlogPostWithId } from '../Models/BlogPostWithId.model';
 import { Router } from '@angular/router';
 import { orderBy, query } from 'firebase/firestore';
@@ -66,6 +66,22 @@ export class BlogPostsService {
     let catCollection = collection(this.firestore, 'blogposts')
     let docRef = doc(catCollection, id);
     return docData(docRef, { idField: 'id' }) as Observable<BlogPostWithId>
+  }
+
+  loadDataWithPostLink(postLink:string){
+    let catCollection = collection(this.firestore, 'blogposts')
+    let q = query(catCollection, where('postLink', '==', postLink))
+    return from(getDocs(q)).pipe(
+      map((querySnapshot) => {
+        if (!querySnapshot.empty) {
+          const doc = querySnapshot.docs[0];
+          const data = doc.data()
+          return { id: doc.id ,...data } as BlogPostWithId;
+        } else {
+          return undefined;
+        }
+      })
+    )
   }
 
   updateData(id : string, editedData : BlogPost){

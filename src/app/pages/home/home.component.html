@@ -19,7 +19,7 @@
             <div class="carousel-inner rounded" >
                 <div  *ngFor="let post of featuredPosts; let i = index" class="carousel-item"  [ngClass]="{'active': i === 0}" data-bs-interval="1000">
                     <div class="card-img-top" style=" height: 500px; background-image: url({{post.postImg}}); background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
-                    <div style="cursor: pointer;" class="carousel-caption d-none d-md-block text-white z-3" [routerLink]="['/post', post.category.categoryId ,post.id]">
+                    <div style="cursor: pointer;" class="carousel-caption d-none d-md-block text-white z-3" [routerLink]="['/post', post.postLink]">
                         <h5>{{ post.title }}</h5>
                         <p>{{ post.excerpt }}</p>
                     </div>
