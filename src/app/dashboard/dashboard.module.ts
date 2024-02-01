@@ -28,7 +28,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     NewPostComponent,
     LoginComponent,
     DashboardSubscribersComponent,
-    DashboardCommentsComponent,
+    DashboardCommentsComponent
   ],
   imports: [
     CommonModule,

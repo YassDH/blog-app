@@ -11,17 +11,18 @@ import { DashboardCommentsComponent } from './dashboard-comments/dashboard-comme
 import { NewPostComponent } from './dashboard-posts/new-post/new-post.component';
 import { ErrorPageComponent } from '../shared-components/error-page/error-page.component';
 import { loggedInGuard } from '../guards/logged-in.guard';
+import { exitNewPostGuard } from '../guards/exit-new-post.guard';
 
 
 const routes: Routes = [
+  { path : '', component : LoginComponent, canActivate : [loggedInGuard]},
   { path : '', component: DashboardComponent , children :[
-    { path : '', component : LoginComponent, canActivate : [loggedInGuard]},
     { path : 'home', component : DashboardHomeComponent, canActivate : [authGuardGuard]},
     { path : 'categories', component : DashboardCategoriesComponent, canActivate : [authGuardGuard]},
     { path : 'subscribers', component : DashboardSubscribersComponent, canActivate : [authGuardGuard]},
     { path : 'posts', component : AllPostsComponent, canActivate : [authGuardGuard]},
     { path : 'comments', component : DashboardCommentsComponent, canActivate : [authGuardGuard]},
-    { path : 'posts/new', component : NewPostComponent, canActivate : [authGuardGuard]},
+    { path : 'posts/new', component : NewPostComponent, canActivate : [authGuardGuard],canDeactivate:[exitNewPostGuard]},
     { path : '**', component : ErrorPageComponent, canActivate : [authGuardGuard]}
   ]}
 ];

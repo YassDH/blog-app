@@ -1,4 +1,4 @@
-import { Component, OnDestroy, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { CategoryWithId } from 'src/app/Models/CategoryWithId.model';
@@ -11,7 +11,8 @@ import { BlogPostWithId } from 'src/app/Models/BlogPostWithId.model';
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
-  styleUrls: ['./new-post.component.css']
+  styleUrls: ['./new-post.component.css'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class NewPostComponent implements OnDestroy {
 
@@ -113,5 +114,22 @@ export class NewPostComponent implements OnDestroy {
    
     this.postForm.reset()
     this.imgSrc = "./assets/image-placeholder.png"
+  }
+
+  
+  canDeactivate(){
+    let empty = true;
+    let values = Object.values(this.postForm.value);
+  
+    for (const value of values) {
+      if (value) {
+        empty = false;
+        break;
+      }
+    }
+    if (!empty) {
+      return window.confirm('You have unsaved changes. Do you really want to leave?');
+    }
+    return true;
   }
 }

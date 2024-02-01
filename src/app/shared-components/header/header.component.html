@@ -1,9 +1,9 @@
 <header class=" navbar navbar-expand-lg fixed-top bg-white">
     <div class="container justify-content-center">
-        <a class="site-logo" routerLink = "/">GL4 BLOG</a>
+        <a class="site-logo" [routerLink]="['/']"><h2>GL4 BLOG</h2></a>
     </div>
     <div *ngIf="loggedInUser$ | async as user" class="container justify-content-center d-flex gap-3">
         <a href="#" class="mr-3">{{user.email}}</a>
-        <button class="btn btn-sm btn-info bg-secondary-theme text-theme-primary" (click)="onLogout()">Logout</button>
+        <button class="btn btn-sm btn-info bg-third-theme text-theme-primary" (click)="onLogout()">Logout</button>
     </div>
 </header>

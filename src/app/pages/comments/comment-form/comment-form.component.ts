@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BlogPostWithId } from 'src/app/Models/BlogPostWithId.model';
 import { Comment } from 'src/app/Models/Comment.model';
@@ -7,7 +7,8 @@ import { CommentsService } from 'src/app/services/comments.service';
 @Component({
   selector: 'app-comment-form',
   templateUrl: './comment-form.component.html',
-  styleUrls: ['./comment-form.component.css']
+  styleUrls: ['./comment-form.component.css'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class CommentFormComponent {
 

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommentWithId } from 'src/app/Models/CommentWithId.model';
 import { CommentsService } from 'src/app/services/comments.service';
@@ -6,7 +6,8 @@ import { CommentsService } from 'src/app/services/comments.service';
 @Component({
   selector: 'app-dashboard-comments',
   templateUrl: './dashboard-comments.component.html',
-  styleUrls: ['./dashboard-comments.component.css']
+  styleUrls: ['./dashboard-comments.component.css'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class DashboardCommentsComponent {
 

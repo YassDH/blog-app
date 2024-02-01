@@ -37,6 +37,12 @@ export class CommentsService {
     return collectionData(q, { idField: 'id' }) as Observable<CommentWithId[]>;
   }
 
+  loadAllData(){
+    let commCollection = collection(this.firestore, 'comments')
+    let q = query(commCollection)
+    return collectionData(q, { idField: 'id' }) as Observable<CommentWithId[]>;
+  }
+
   loadNotApprovedComments(){
     let commCollection = collection(this.firestore, 'comments')
     let q = query(commCollection,

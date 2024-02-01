@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SubscriberWithId } from 'src/app/Models/SubscriberWithId.model';
 import { SubscribersService } from 'src/app/services/subscribers.service';
@@ -6,7 +6,8 @@ import { SubscribersService } from 'src/app/services/subscribers.service';
 @Component({
   selector: 'app-dashboard-subscribers',
   templateUrl: './dashboard-subscribers.component.html',
-  styleUrls: ['./dashboard-subscribers.component.css']
+  styleUrls: ['./dashboard-subscribers.component.css'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class DashboardSubscribersComponent {
   subService : SubscribersService = inject(SubscribersService)
