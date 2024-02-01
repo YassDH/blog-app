@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/Models/Category.model';
@@ -8,7 +8,8 @@ import { CategoriesService } from 'src/app/services/categories.service';
 @Component({
   selector: 'app-dashboard-categories',
   templateUrl: './dashboard-categories.component.html',
-  styleUrls: ['./dashboard-categories.component.css']
+  styleUrls: ['./dashboard-categories.component.css'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class DashboardCategoriesComponent {
 

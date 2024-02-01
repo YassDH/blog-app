@@ -4,11 +4,13 @@ import { BlogPostsService } from 'src/app/services/blog-posts.service';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { CommentsService } from 'src/app/services/comments.service';
 import { SubscribersService } from 'src/app/services/subscribers.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-home',
   templateUrl: './dashboard-home.component.html',
-  styleUrls: ['./dashboard-home.component.css']
+  styleUrls: ['./dashboard-home.component.css'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class DashboardHomeComponent {
 
