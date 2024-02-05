@@ -29,10 +29,18 @@ export class NewPostComponent implements OnDestroy {
   categories$ : Observable<CategoryWithId[]> = this.categoryService.loadData()
   formBuilder : FormBuilder = inject(FormBuilder)
   route : ActivatedRoute = inject(ActivatedRoute)
-  observerReference : Subscription
+  subscription : Subscription
 
   constructor(){
-    this.observerReference = this.route.queryParams.subscribe(value=>{
+    this.postForm = this.formBuilder.group({
+      title: ['', [Validators.required, Validators.minLength(10)]],
+      postLink: [{ value: '', disabled: true }, Validators.required],
+      excerpt: ['', [Validators.required, Validators.minLength(50)]],
+      category: ['', Validators.required],
+      postImg: ['', Validators.required],
+      content: ['', Validators.required]
+    })
+    this.subscription = this.route.queryParams.subscribe(value=>{
       if(value['id']){
         this.blogPostService.loadOneData(value['id']).subscribe((post)=>{
           this.loadedPost = post
@@ -51,22 +59,13 @@ export class NewPostComponent implements OnDestroy {
           this.docId = this.loadedPost.id
           
         })
-      }else{
-        this.postForm = this.formBuilder.group({
-          title: ['', [Validators.required, Validators.minLength(10)]],
-          postLink: [{ value: '', disabled: true }, Validators.required],
-          excerpt: ['', [Validators.required, Validators.minLength(50)]],
-          category: ['', Validators.required],
-          postImg: ['', Validators.required],
-          content: ['', Validators.required]
-        })
       }
     })
-
+    
   }
 
   ngOnDestroy(): void {
-    this.observerReference.unsubscribe()
+    this.subscription.unsubscribe()
   }
 
   onTitleChanged($event : any){
@@ -91,7 +90,6 @@ export class NewPostComponent implements OnDestroy {
   }
 
   onSumbit(){
-    
     let [categoryId, category] = this.postForm.value.category.split('-');
 
     const postData : BlogPost ={

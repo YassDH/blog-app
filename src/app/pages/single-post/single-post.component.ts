@@ -10,52 +10,22 @@ import { BlogPostsService } from 'src/app/services/blog-posts.service';
   styleUrls: ['./single-post.component.css'],
   changeDetection : ChangeDetectionStrategy.OnPush
 })
-export class SinglePostComponent implements OnInit, OnDestroy{
+export class SinglePostComponent implements OnInit{
   router : Router = inject(Router)
   blogPostsService : BlogPostsService = inject(BlogPostsService)
   route : ActivatedRoute = inject(ActivatedRoute)
   subscription!: Subscription
-  postData$! : Observable<BlogPostWithId | null>
-  similarPosts$ : Observable<BlogPostWithId[] | null> = of(null)
+  postData$! : Observable<Observable<BlogPostWithId> | null>
+  similarPosts$ : Observable<Observable<BlogPostWithId[]> | null> = of(null)
 
   ngOnInit(): void{
     this.postData$ = this.route.data.pipe(map((data)=>{
       return data['postData']
     }))
-
-
-    this.subscription = this.route.params.subscribe(val=>{
-      const postLink = val['postLink']
-
-    //   this.postData$ = this.blogPostsService.loadDataWithPostLink(postLink).pipe(
-    //     map((value)=>{
-    //       if(!value){
-    //         this.router.navigate(['/error'])
-    //         return null
-    //       }else{
-    //         return value
-    //       }
-    //     })
-    //   )
-
-      this.subscription = this.blogPostsService.loadDataWithPostLink(postLink).subscribe(
-        (value)=>{
-          if(!value){
-            this.router.navigate(['/error'])
-          }else{
-            this.similarPosts$ = this.blogPostsService.loadSimilarPosts(value.category.categoryId)
-          }
-        }
-      )
-
-      // this.postData$ = this.blogPostsService.loadOneData(val['id'])
-      // this.similarPosts$ = this.blogPostsService.loadSimilarPosts(val['categoryId'])
-      // this.blogPostsService.countViews(val['id'])
-      
-    })
+    this.similarPosts$ = this.route.data.pipe(map((data)=>{
+      return data['similarPosts']
+    }))
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe()
-  }
+
 }

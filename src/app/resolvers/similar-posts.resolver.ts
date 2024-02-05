@@ -1,17 +1,21 @@
 import { ResolveFn, Router } from '@angular/router';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { BlogPostWithId } from '../Models/BlogPostWithId.model';
 import { BlogPostsService } from '../services/blog-posts.service';
 import { inject } from '@angular/core';
 
-export const similarPostsResolver: ResolveFn<Observable<BlogPostWithId[] | null>> = (route, state) => {
+export const similarPostsResolver: ResolveFn<Observable<Observable<BlogPostWithId[]> | null>> = (route, state) => {
   const router: Router = inject(Router)
   const blogPostsService: BlogPostsService = inject(BlogPostsService)
   const postLink = route.params['postLink'];
-  return blogPostsService.loadSimilarPosts(postLink).pipe(
-      catchError(() => {
-        router.navigate(['/error']);
-        return of(null);
-      })      
+  return blogPostsService.loadDataWithPostLink(postLink).pipe(
+      map((value)=>{
+        if(!value){
+          router.navigate(['/error'])
+          return null
+        }else{
+          return blogPostsService.loadSimilarPosts(value.category.categoryId)
+        }
+      })  
   );
 };

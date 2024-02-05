@@ -33,10 +33,10 @@
                                 <label>Description</label>
                                 <textarea cols="30" rows="10" class="form-control" formControlName="excerpt" [ngClass]="{'is-invalid' : formControl['excerpt'].touched && formControl['excerpt'].invalid}"></textarea>
                                 <div *ngIf="formControl['excerpt'].hasError('required')">
-                                    <div class="alert alert-danger" *ngIf="formControl['excerpt'].touched && formControl['excerpt'].invalid">Excerpt is required</div>
+                                    <div class="alert alert-danger" *ngIf="formControl['excerpt'].touched && formControl['excerpt'].invalid">Description is required</div>
                                 </div>
                                 <div *ngIf="formControl['excerpt'].hasError('minlength')">
-                                    <div class="alert alert-danger" *ngIf="formControl['excerpt'].touched && formControl['excerpt'].invalid">Excerpt must be at least 50 caracters long</div>
+                                    <div class="alert alert-danger" *ngIf="formControl['excerpt'].touched && formControl['excerpt'].invalid">Description must be at least 50 caracters long</div>
                                 </div>
                             </div>
                         </div>
